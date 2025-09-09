@@ -1,0 +1,186 @@
+:root {
+  --c1: #ff0000;
+  --c2: #7cfc00;
+  --c3: #87ceeb;
+  --c4: #9370db;
+  --c5: #8b00ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #2b2430;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--c1) 0 80px,
+    var(--c2) 80px 160px,
+    var(--c3) 160px 240px,
+    var(--c4) 240px 320px,
+    var(--c5) 320px 400px
+  );
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.wrap {
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 5vw, 40px);
+}
+
+.card {
+  width: min(100%, 980px);
+  background: #ffffffef;
+  border-radius: 26px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  border: 3px solid rgba(0,0,0,0.12);
+  position: relative;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+.hero {
+  text-align: center;
+  padding: clamp(16px, 4vw, 36px);
+}
+
+.hero .title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 6vw, 68px);
+  margin: 0;
+
+  /* Gradiente lilás/roxo */
+  background: linear-gradient(
+    90deg,
+    #9370db 0%,
+    #8b00ff 40%,
+    #87ceeb 60%,
+    #7cfc00 80%,
+    #ff0000 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+.hero .subtitle {
+  font-size: clamp(14px, 2.2vw, 22px);
+  opacity: 0.9;
+  color: #000;
+  margin-top: 8px;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #9470dbd6,
+    #8b00ff,
+    #87ceeb
+  );
+  color: #fff; /* texto branco para contraste */
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: clamp(12px, 2vw, 13px);
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-align: center;
+
+  /* Suaviza a transição do gradiente */
+  background-size: 200% auto;
+  transition: background-position 0.5s;
+}
+
+.badge:hover {
+  background-position: right center; /* efeito sutil ao passar o mouse */
+}
+
+.quote {
+  font-size: clamp(12px, 2vw, 18px);
+  margin-top: 10px;
+  font-style: italic;
+
+   /* Gradiente lilás/roxo */
+  background: linear-gradient(
+    90deg,
+    #9370db 0%,
+    #8b00ff 40%,
+    #87ceeb 60%,
+    #7cfc00 80%,
+    #ff0000 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first */
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (min-width: 600px) {
+  .grid { grid-template-columns: 1.2fr 0.8fr; gap: 30px; padding: 30px; }
+}
+
+.panel {
+  background: white;
+  border-radius: 18px;
+  padding: clamp(16px, 3vw, 24px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+
+.info { display: grid; gap: 12px; font-size: clamp(14px, 2vw, 16px); }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  border: 1px dashed rgba(0,0,0,0.35);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f8f8ff;
+  font-weight: 600;
+  font-size: clamp(12px, 1.8vw, 14px);
+}
+
+.polaroid { background: #fff; padding: 16px; border-radius: 14px; text-align: center; }
+.polaroid img { width: 100%; max-width: 220px; border-radius: 10px; }
+.caption { font-size: clamp(12px, 1.8vw, 14px); margin-top: 8px; opacity: 0.7; }
+
+.cta { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
+.btn {
+  background: var(--c4);
+  color: white;
+  padding: clamp(10px, 2.5vw, 14px) clamp(18px, 5vw, 22px);
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+  transition: transform 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.confetti {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.confetti i {
+  position: absolute; width: 10px; height: 16px;
+  top: -20px; opacity: .85;
+  animation: fall linear var(--t) var(--d) infinite;
+}
+.confetti i:nth-child(3n) { background: var(--c2); }
+.confetti i:nth-child(4n) { background: var(--c3); }
+.confetti i:nth-child(5n) { background: var(--c4); }
+.confetti i:nth-child(6n) { background: var(--c5); }
+
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(360deg); }
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+  font-size: clamp(10px, 2vw, 12px);
+  opacity: 0.7;
+}
